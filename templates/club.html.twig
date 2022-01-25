@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Création du club !</h1> 
+
+    {{ form_start(form) }}
+    {{ form_row(form.nom, {'attr': {'placeholder': "nom du club" }}) }}
+    {{ form_row(form.location, {'attr': {'placeholder': "description du club"  }}) }}
+
+        <button type="submit" class="btn btn-success"> Ajouter le club </button>
+
+    {{ form_end(form) }}
+{% endblock %}

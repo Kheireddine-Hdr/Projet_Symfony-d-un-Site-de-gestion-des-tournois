@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %} Liste des equipes{% endblock %}
+{# définition du bloc title utilisé par le parent base #}
+{% block body %} {# définition du bloc body utilisé parent #}
+<h1> Liste des equipes et leurs joueurs </h1>
+
+{% for e in eqpes %}
+
+    <em><h2> {{ e.nom }} </h2></em> 
+    {% if is_granted('ROLE_EDITOR') %} 
+    <h6> <a href="{{ path('modifier_equipe', {'id': e.id}) }}">Modifier l'equipe : {{ e }}  </a> </h6> 
+    {% endif %}
+
+<div class="lister">   
+    <table class="w3-table">
+        <tr>
+            <th> joueur </th>
+            <th> poste </th>
+        </tr>
+    {% for t in e.joueurs %}
+
+    <tr>
+        <td><h5> {{ t.nom }} {{ t.prenom }} </h5> </td>
+        <td><h5> {{ t.poste }} </h5> </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+    <h5>--------------------------------------------------------------------------------------------------------------------------------------</h5>  
+</div>
+{% endfor %}
+
+{% endblock %}

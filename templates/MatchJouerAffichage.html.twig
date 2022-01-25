@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %} Liste des Matchs{% endblock %}
+{% block body %}
+<h1> Liste des Matchs</h1>
+{% for e in matchs %}
+
+<div class="lister">
+    <table class="w3-table">
+        <tr>
+            <th>Groupe</th>
+            <th>Matchs</th>
+            <th>score</th>
+            <th>description</th>
+        </tr>
+        
+        <tr>   
+        <td><h2> {{ e.MatchsDegroupe }} </h2></td>
+        <td><h5> {{ e.equipe01 }} </h5> </td>
+        <td><h5> {{ e.score01 }} </h5><br></td>
+        <tr>   
+        <td></td>
+        <td><h5> {{ e.equipe02 }} </h5></td>
+        <td><h5>  {{ e.score02 }} </h5></td>
+        <td class="desc"><h2> {{ e.description }} </h2></td>
+        </tr>
+        {% if is_granted('ROLE_EDITOR') %}
+          <td><a href="{{ path('modifier_match', {'id': e.id}) }}">Modifier</a></td>
+        {% endif %}
+        </tr>  
+    </table>  
+
+</div>
+{% endfor %}
+
+{% endblock %}

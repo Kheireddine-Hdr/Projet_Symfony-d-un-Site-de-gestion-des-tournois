@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+{% block title %} Liste des tours{% endblock %}
+{% block body %}
+<h1> Liste des tours</h1>
+
+
+<h2> {{ 'Quarts de finale' }} </h2>
+<div class="lister">   
+    <table class="w3-table">
+        <tr>
+            <th>Groupes</th>
+            <th>equipes</th>
+            {% if is_granted('ROLE_EDITOR') %}
+                <th></th>
+                <th>Action</th>
+            {% endif %}
+        </tr>
+        {% for e in tours %}
+           {% if e.nom == 'Quarts de finale' %}    
+          <tr>
+            <td>
+            {% for s in e.groupes %}
+                <h5> {{ s }} </h5><br>
+            {% endfor %}
+            </td>
+            <td>
+            {% for q in e.equipes %}
+              <h5> {{ q }} </h5><br> 
+            {% endfor %} 
+            </td>
+            <td>
+            {% if is_granted('ROLE_EDITOR') %}
+                <td><a href="{{ path('modifier_tour', {'id': e.id}) }}">Modifier</a></td>
+            {% endif %}
+            </td>
+        {% endif %}
+
+    </tr>    
+    {% endfor %}   
+    </table>  
+</div>
+
+<h2> {{ 'Demi-finales' }} </h2>
+<div class="lister">   
+    <table class="w3-table">
+        <tr>
+            <th>Groupes</th>
+            <th>equipes</th>
+            {% if is_granted('ROLE_EDITOR') %}
+                <th></th>
+                <th>Action</th>
+            {% endif %}
+        </tr>
+        {% for e in tours %}
+           {% if e.nom == 'Demi-finales' %}    
+          <tr>
+            <td>
+            {% for s in e.groupes %}
+                <h5> {{ s }} </h5><br>
+            {% endfor %}
+            </td>
+            <td>
+            {% for q in e.equipes %}
+              <h5> {{ q }} </h5><br> 
+            {% endfor %} 
+            </td>
+             <td>
+            {% if is_granted('ROLE_EDITOR') %}
+                <td><a href="{{ path('modifier_tour', {'id': e.id}) }}">Modifier</a></td>
+            {% endif %}
+            </td>
+        {% endif %}
+    </tr>    
+    {% endfor %}   
+    </table>  
+</div>
+
+<h2> {{ 'Finale' }} </h2>
+<div class="lister">   
+    <table class="w3-table">
+        <tr>
+            <th>Groupes</th>
+            <th>equipes</th>
+            {% if is_granted('ROLE_EDITOR') %}
+                <th></th>
+                <th>Action</th>
+            {% endif %}
+            
+            
+        </tr>
+        {% for e in tours %}
+           {% if e.nom == 'Finale' %}    
+          <tr>
+            <td>
+            {% for s in e.groupes %}
+                <h5> {{ s }} </h5><br>
+            {% endfor %}
+            </td>
+            <td>
+            {% for q in e.equipes %}
+              <h5> {{ q }} </h5><br> 
+            {% endfor %} 
+            </td>
+             <td>
+            {% if is_granted('ROLE_EDITOR') %}
+                <td><a href="{{ path('modifier_tour', {'id': e.id}) }}">Modifier</a></td>
+            {% endif %}
+            </td>
+        {% endif %}
+    </tr>    
+    {% endfor %}   
+    </table>  
+</div>
+
+{% endblock %}

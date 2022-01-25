@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Création d'un tournoi !</h1> 
+
+    {{ form_start(form) }}
+    {{ form_row(form.ev) }}
+    {{ form_row(form.nom, {'attr': {'placeholder': "nom du tournoi" }}) }}
+    {{ form_row(form.description, {'attr': {'placeholder': "description du tournoi"  }}) }}
+
+        <button type="submit" class="btn btn-success"> Ajouter le tournoi </button>
+
+    {{ form_end(form) }}
+{% endblock %}

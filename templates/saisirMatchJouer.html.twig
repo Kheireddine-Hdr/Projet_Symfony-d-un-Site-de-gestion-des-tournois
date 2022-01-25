@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Création d'un Match !</h1> 
+
+    {{ form_start(form) }}
+    {{ form_row(form.MatchsDegroupe) }}
+    {{ form_row(form.equipe01) }}
+    {{ form_row(form.score01, {'attr': {'placeholder': " score" }}) }}
+    {{ form_row(form.equipe02) }}    
+    {{ form_row(form.score02, {'attr': {'placeholder': "score"  }}) }}
+    {{ form_row(form.description, {'attr': {'placeholder': "description"  }}) }}
+
+        <button type="submit" class="btn btn-success"> Ajouter le Match </button>
+
+    {{ form_end(form) }}
+{% endblock %}

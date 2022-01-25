@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %} Liste des tournois{% endblock %}
+{# définition du bloc title utilisé par le parent base #}
+{% block body %} {# définition du bloc body utilisé parent #}
+<h1> Liste des événements et des tournois </h1>
+
+{% for e in evts %} 
+     <h3> {{ ' nom de l\'evenement :' }} {{ e.nom }} <h6> {{e.dateDebut.format('d/m/Y')}} {{'-'}} {{e.dateFin.format('d/m/Y')}} </h6> </h3>
+    {% if is_granted('ROLE_EDITOR') %} 
+    <h5> <a href="{{ path('modifier_evenement', {'id': e.id}) }}">Modifier l'evenement {{ e }} </a> </h5> {# utilise getNom() #}
+    {% endif %}
+
+<div class="lister">   
+    <table class="w3-table">
+        <tr>
+            <th>nom du tournoi</th>
+            <th>description du tournoi</th>
+        </tr>
+    {% for t in e.tournois %}
+
+    <tr>
+        <td><h5> {{ t.nom }} </h5> </td>
+        <td><h5> {{ t.description }} </h5></td>
+    {# <em>{{ t.nom }} </em> ==> {{ t.description }}  #}
+    </tr>
+    {% endfor %}
+    </table>  
+</div>
+{% endfor %}
+
+{% endblock %}

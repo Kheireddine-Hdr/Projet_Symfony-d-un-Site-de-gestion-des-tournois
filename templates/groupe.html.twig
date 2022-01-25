@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Création d'un groupe !</h1> 
+
+    {{ form_start(form) }}
+    {{ form_row(form.tournoi) }}
+    {{ form_row(form.nom, {'attr': {'placeholder': "nom de groupe" }}) }}
+
+        <button type="submit" class="btn btn-success"> Ajouter le groupe </button>
+
+    {{ form_end(form) }}
+{% endblock %}

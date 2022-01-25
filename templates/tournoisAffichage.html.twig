@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %} Liste des tournois{% endblock %}
+{# définition du bloc title utilisé par le parent base #}
+{% block body %} {# définition du bloc body utilisé parent #}
+<h1> Liste des tournois et leurs groupes </h1>
+
+{% for e in trns %}
+
+    <h2> {{ e.nom }} </h2> {# utilise getNom() #}
+    {% if is_granted('ROLE_EDITOR') %} 
+    <h5> <a href="{{ path('modifier_tournoi', {'id': e.id}) }}">Modifier le tounoi {{ e }} </a> </h5> {# utilise getNom() #}
+{% endif %}
+
+<div class="lister">   
+    <table class="w3-table">
+        <tr>
+            <th>nom du groupe</th>
+        </tr>
+    {% for t in e.groupes %}
+
+    <tr>
+        <td><h5> {{ t.nom }} </h5> </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+    <h5>--------------------------------------------------------------------------------------------------------------------------------------</h5>  
+</div>
+{% endfor %}
+
+{% endblock %}
+

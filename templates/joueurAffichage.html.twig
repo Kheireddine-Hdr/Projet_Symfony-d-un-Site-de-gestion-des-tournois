@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block title %} Liste des joueurs{% endblock %}
+{# définition du bloc title utilisé par le parent base #}
+{% block body %} {# définition du bloc body utilisé parent #}
+<h1> Liste de tout joueurs participant au tournoi </h1> 
+
+<div class="lister">   
+    <table class="w3-table">
+        <tr>
+            <th>Joueur</th>
+            <th>poste</th>
+        </tr>
+    {% for e in Jrs %}
+    {% for t in e.joueurs %}
+        <tr>
+            <td><h5> {{ t.nom }} {{ t.prenom }} </h5> </td>
+            <td><h5> {{ t.poste }} </h5></td>
+        </tr>
+    {% endfor %}
+    {% endfor %}
+    </table>
+    <h5>--------------------------------------------------------------------------------------------------------------------------------------</h5>  
+</div>
+
+<style>
+    .w3-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    .w3-table td, .w3-table th {
+    /*border: 1px solid #ddd;*/
+    padding: 8px;
+    }
+
+    /*.w3-table tr:nth-child(even){background-color: #f2f2f2;}*/
+
+    .w3-table tr:hover {background-color: #ddd;}
+
+    .w3-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+    }
+
+    H1 {
+        text-align: center
+        }
+
+    .w3-table {
+    table-layout: fixed;
+    width: 900px;
+    }
+
+    .groupe {
+        width: 80em;
+    }
+
+    .desc{
+        width: 100px;
+    }
+</style>
+
+{% endblock %}

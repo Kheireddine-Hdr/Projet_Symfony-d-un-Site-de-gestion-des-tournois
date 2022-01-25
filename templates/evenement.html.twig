@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Création d'un evenement !</h1> 
+
+    {{ form_start(form) }}
+    {{ form_row(form.nom, {'attr': {'placeholder': "nom de l'evenement" }}) }}
+    {{ form_row(form.dateDebut, {'attr': {'placeholder': "date de bebut"  }}) }}
+    {{ form_row(form.dateFin, {'attr': {'placeholder': "date de fin"  }}) }}
+
+        <button type="submit" class="btn btn-success"> Ajouter l'evenement </button>
+
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %} Liste des groupes{% endblock %}
+{# définition du bloc title utilisé par le parent base #}
+{% block body %} {# définition du bloc body utilisé parent #}
+<h1> Liste des groupes et leurs equipes </h1>
+
+{% for e in cls %} 
+    <h2> {{ ' Groupe :' }} {{ e.nom }} </h2> 
+    {% if is_granted('ROLE_EDITOR') %} 
+    <h5> <a href="{{ path('modifier_groupe', {'id': e.id}) }}">Modifier le groupe {{ e }} </a> </h5> 
+    {% endif %}
+
+<div class="lister">   
+    <table class="w3-table">
+        <tr>
+            <th>equipe</th>
+            <th>description de l'equipe</th>
+        </tr>
+    {% for t in e.equipes %}
+        <tr>
+            <td><h5> {{ t.nom }} </h5> </td>
+            <td><h5> {{ t.description }} </h5></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <h5>--------------------------------------------------------------------------------------------------------------------------------------</h5>  
+</div>
+{% endfor %}
+
+{% endblock %}
